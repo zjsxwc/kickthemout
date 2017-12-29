@@ -16,7 +16,7 @@ try:
     # check whether user is root
     if os.geteuid() != 0:
         print("\n{0}ERROR: KickThemOut must be run with root privileges. Try again with sudo:\n\t{1}$ sudo python kickthemout.py{2}\n").format(RED, GREEN, END)
-        raise SystemExit
+        os._exit(1)
 except:
     # then user is probably on windows
     pass
@@ -24,7 +24,7 @@ except:
 def shutdown():
     print('\n\n{0}Thanks for dropping by.'
           '\nCatch ya later!{1}').format(GREEN, END)
-    raise SystemExit
+    os._exit(1)
 
 logging.getLogger("scapy.runtime").setLevel(logging.ERROR)  # Shut up scapy!
 try:
@@ -36,7 +36,7 @@ except:
     print("\n{0}ERROR: Requirements have not been satisfied properly. Please look at the README file for configuration instructions.").format(RED)
     print("\n{0}If you still cannot resolve this error, please submit an issue here:\n\t{1}https://github.com/k4m4/kickthemout/issues\n\n{2}Details: {3}" + str(sys.exc_info()[1] ) + "{4}").format(RED, BLUE, RED, GREEN, END)
     #print("Details: " + sys.exc_info())
-    raise SystemExit
+    os._exit(1)
 
 
 
@@ -74,7 +74,7 @@ def scanningAnimation(text):
             i += 1
             time.sleep(0.1)
     except:
-        raise SystemExit
+        os._exit(1)
 
 
 
@@ -134,7 +134,7 @@ def runDebug():
         print ("Failed to print crash trace...")
     print ("DEBUG FINISHED.\nShutting down...")
     print("{0}").format(END)
-    raise SystemExit
+    os._exit(1)
 
 
 
@@ -172,8 +172,8 @@ def scanNetwork():
     except KeyboardInterrupt:
         shutdown()
     except:
-        print("\n{0}ERROR: Network scanning failed. Please check your requirements configuration.{1}\n").format(RED, END)
-        raise SystemExit
+        print("\n\n{0}ERROR: Network scanning failed. Please check your requirements configuration.{1}").format(RED, END)
+        os._exit(1)
     regenOnlineIPs()
 
 
@@ -218,7 +218,7 @@ def nonInteractiveAttack():
                     macAddress = retrieveMACAddress(ipAddress)
                     if macAddress == False:
                         print("\n{0}ERROR: MAC address of target host could not be retrieved! Maybe host is down?{1}").format(RED, END)
-                        raise SystemExit
+                        os._exit(1)
                     spoof.sendPacket(defaultInterfaceMac, defaultGatewayIP, ipAddress, macAddress)
                 if options.packets is not None:
                     time.sleep(60/options.packets)
@@ -236,7 +236,7 @@ def nonInteractiveAttack():
                         macAddress = retrieveMACAddress(ipAddress)
                     except:
                         print("\n{0}ERROR: MAC address of target host could not be retrieved! Maybe host is down?{1}").format(RED, END)
-                        raise SystemExit
+                        os._exit(1)
                     try:
                         spoof.sendPacket(defaultGatewayMac, defaultGatewayIP, ipAddress, macAddress)
                     except KeyboardInterrupt:
@@ -261,7 +261,7 @@ def nonInteractiveAttack():
             hw = get_if_raw_hwaddr(iface)
         except:
             print("\n{0}ERROR: Wireless Interface {1}" + str(iface) + "{2} could not be detected. Make sure it's running normally.{3}").format(RED, GREEN, RED, END)
-            raise SystemExit
+            os._exit(1)
         # </FIX>
 
         try:
@@ -273,7 +273,7 @@ def nonInteractiveAttack():
                     macAddress = retrieveMACAddress(ipAddress)
                     if macAddress == False:
                         print("\n{0}ERROR: MAC address of target host could not be retrieved! Maybe host is down?{1}").format(RED, END)
-                        raise SystemExit
+                        os._exit(1)
                     spoof.sendDeauthPacket(iface, bssid, macAddress)
                 if options.packets is not None:
                     time.sleep(60/options.packets)
@@ -310,7 +310,7 @@ def kickoneoff():
             if host[0] == onlineIPs[i]:
                 mac = host[1]
         vendor = resolveMac(mac)
-        print("  [{0}" + str(i) + "{1}] {2}" + str(onlineIPs[i]) + "{3}\t"+ vendor + "{4}").format(YELLOW, WHITE, RED, GREEN, END)
+        print("  [{0}" + str(i) + "{1}] {2}" + str(onlineIPs[i]) + "{3}\t" + mac + "{4}\t" + vendor + "{5}").format(YELLOW, WHITE, RED, BLUE, GREEN, END)
 
     canBreak = False
     while not canBreak:
@@ -375,7 +375,7 @@ def kickoneoff():
             hw = get_if_raw_hwaddr(iface)
         except:
             print("\n{0}ERROR: Wireless Interface {1}" + str(iface) + "{2} could not be detected. Make sure it's running normally.{3}").format(RED, GREEN, RED, END)
-            raise SystemExit
+            os._exit(1)
         # </FIX>
 
         try:
@@ -385,7 +385,7 @@ def kickoneoff():
                 macAddress = oneTargetMAC
                 if macAddress == False:
                     print("\n{0}ERROR: MAC address of target host could not be retrieved! Maybe host is down?{1}").format(RED, END)
-                    raise SystemExit
+                    os._exit(1)
                 spoof.sendDeauthPacket(iface, bssid, macAddress)
                 if options.packets is not None:
                     time.sleep(60/options.packets)
@@ -421,7 +421,7 @@ def kicksomeoff():
             if host[0] == onlineIPs[i]:
                 mac = host[1]
         vendor = resolveMac(mac)
-        print("  [{0}" + str(i) + "{1}] {2}" + str(onlineIPs[i]) + "{3}\t" + vendor + "{4}").format(YELLOW, WHITE, RED, GREEN, END)
+        print("  [{0}" + str(i) + "{1}] {2}" + str(onlineIPs[i]) + "{3}\t" + mac + "{4}\t" + vendor + "{5}").format(YELLOW, WHITE, RED, BLUE, GREEN, END)
 
     canBreak = False
     while not canBreak:
@@ -497,7 +497,7 @@ def kicksomeoff():
             hw = get_if_raw_hwaddr(iface)
         except:
             print("\n{0}ERROR: Wireless Interface {1}" + str(iface) + "{2} could not be detected. Make sure it's running normally.{3}").format(RED, GREEN, RED, END)
-            raise SystemExit
+            os._exit(1)
         # </FIX>
 
         try:
@@ -509,7 +509,7 @@ def kicksomeoff():
                     macAddress = retrieveMACAddress(ipAddress)
                     if macAddress == False:
                         print("\n{0}ERROR: MAC address of target host could not be retrieved! Maybe host is down?{1}").format(RED, END)
-                        raise SystemExit
+                        os._exit(1)
                     spoof.sendDeauthPacket(iface, bssid, macAddress)
                 if options.packets is not None:
                     time.sleep(60/options.packets)
@@ -546,8 +546,8 @@ def kickalloff():
             if host[0] == onlineIPs[i]:
                 mac = host[1]
         vendor = resolveMac(mac)
-        print(str("  {0}"+ str(onlineIPs[i]) + "{1}\t" + vendor + "{2}").format(RED, GREEN, END))
-
+        print("  [{0}" + str(i) + "{1}] {2}" + str(onlineIPs[i]) + "{3}\t" + mac + "{4}\t" + vendor + "{5}").format(YELLOW, WHITE, RED, BLUE, GREEN, END)
+    
     if attackVector == 'ARP':
 
         print("\n{0}Spoofing started... {1}").format(GREEN, END)
@@ -599,7 +599,7 @@ def kickalloff():
             hw = get_if_raw_hwaddr(iface)
         except:
             print("\n{0}ERROR: Wireless Interface {1}" + str(iface) + "{2} could not be detected. Make sure it's running normally.{3}").format(RED, GREEN, RED, END)
-            raise SystemExit
+            os._exit(1)
         # </FIX>
 
         try:
@@ -654,8 +654,7 @@ def getGatewayIP():
         # request gateway IP address (after failed detection by scapy)
         print("\n{0}ERROR: Gateway IP could not be obtained. Please enter IP manually.{1}\n").format(RED, END)
         header = ('{0}kickthemout{1}> {2}Enter Gateway IP {3}(e.g. 192.168.1.1): '.format(BLUE, WHITE, RED, END))
-        gatewayIP = raw_input(header)
-        return gatewayIP
+        return (raw_input(header))
 
 
 
@@ -668,16 +667,14 @@ def getDefaultInterfaceMAC():
             "\n{0}ERROR: Default Interface MAC Address could not be obtained. Please enter MAC manually.{1}\n").format(
                 RED, END)
             header = ('{0}kickthemout{1}> {2}Enter MAC Address {3}(MM:MM:MM:SS:SS:SS): '.format(BLUE, WHITE, RED, END))
-            defaultInterfaceMac = raw_input(header)
-            return defaultInterfaceMac
+            return (raw_input(header))
         else:
             return defaultInterfaceMac
     except:
         # request interface MAC address (after failed detection by scapy)
         print("\n{0}ERROR: Default Interface MAC Address could not be obtained. Please enter MAC manually.{1}\n").format(RED, END)
         header = ('{0}kickthemout{1}> {2}Enter MAC Address {3}(MM:MM:MM:SS:SS:SS): '.format(BLUE, WHITE, RED, END))
-        defaultInterfaceMac = raw_input(header)
-        return defaultInterfaceMac
+        return (raw_input(header))
 
 
 
@@ -716,7 +713,7 @@ def main():
                 if hostsList[0][0] == defaultGatewayIP:
                     print("\n{0}{1}WARNING: There are {2}0{3} hosts up on you network except your gateway.\n\tYou can't kick anyone off {4}:/{5}\n").format(
                         GREEN, RED, GREEN, RED, GREEN, END)
-                    raise SystemExit
+                    os._exit(1)
             else:
                 print(
                 "\n{0}{1}WARNING: There are {2}0{3} hosts up on you network.\n\tIt looks like something went wrong {4}:/{5}").format(
@@ -724,7 +721,7 @@ def main():
                 print(
                 "\n{0}If you are experiencing this error multiple times, please submit an issue here:\n\t{1}https://github.com/k4m4/kickthemout/issues\n{2}").format(
                     RED, BLUE, END)
-                raise SystemExit
+                os._exit(1)
 
     else:
 
@@ -773,7 +770,7 @@ def main():
                         kickoneoff()
                     else:
                         print("\n{0}ERROR: Something went terribly wrong. Please report this issue. {1}\n").format(RED, END)
-                        raise SystemExit
+                        os._exit(1)
 
                 elif choice == '2':
                     if interactive and options.attack is None:
@@ -801,7 +798,7 @@ def main():
                         kicksomeoff()
                     else:
                         print("\n{0}ERROR: Something went terribly wrong. Please report this issue. {1}\n").format(RED, END)
-                        raise SystemExit
+                        os._exit(1)
 
                 elif choice == '3':
                     if interactive and options.attack is None:
@@ -829,7 +826,7 @@ def main():
                         kickalloff()
                     else:
                         print("\n{0}ERROR: Something went terribly wrong. Please report this issue. {1}\n").format(RED, END)
-                        raise SystemExit
+                        os._exit(1)
 
                 elif choice.upper() == 'CLEAR':
                     os.system("clear||cls")
@@ -886,7 +883,7 @@ if __name__ == '__main__':
         pass
     else:
         print("\n{0}ERROR: Argument for number of packets broadcasted per minute must be an integer {1}(e.g. {2}--packet 60{3}).\n").format(RED, END, BLUE, END)
-        raise SystemExit
+        os._exit(1)
 
     if options.attack is None and options.targets is None or options.attack is not None and options.targets is None:
         # set to interactive version
@@ -913,7 +910,7 @@ if __name__ == '__main__':
         else:
             print("\n{0}ERROR: Invalid attack method selected. Please select one of the following methods:\n" +
                 "\t{1}ARP{2} (ARP Spoofing), {3}DNS{4} (DNS Poisoning), {5}DEAUTH{6} (Deauthanticating){7}\n").format(RED, BLUE, RED, BLUE, RED, BLUE, RED, END)
-            raise SystemExit
+            os._exit(1)
 
         # set to optparser version
         interactive = False

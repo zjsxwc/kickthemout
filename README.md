@@ -16,43 +16,6 @@ Authors: [Nikolaos Kamarinakis](mailto:nikolaskam@gmail.com) & [David Schütz](m
 [![Build Badge](https://travis-ci.org/k4m4/kickthemout.svg?branch=master)](https://travis-ci.org/k4m4/kickthemout)
 [![License Badge](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/k4m4/kickthemout/blob/master/LICENSE)
 [![GitHub Stars](https://img.shields.io/github/stars/k4m4/kickthemout.svg)](https://github.com/k4m4/kickthemout/stargazers)
-
-TODO:
-------
-
-- [x] Fix **README.rst —> README.md**
-- [ ] Fix **ERROR —> Error**
-- [ ] Add **Error Codes** (e.g. Error 21, IOError: [Errno 6] Device not configured)
-- [ ] Add **How it Works** to README
-- [ ] Add **DNS Poisoning Attack** (test)
-- [x] Add **Deauth Attack**
-- [x] Implement **ParseOpt**
-- [ ] Add **loading animation** (like in msfconsole)
-- [x] Fix **^C error when scanning** (doesn’t quit)
-- [x] Fix **^C^C** error —> ‘kickthemout> ^C^C’ (must enter ^C twice to quite)
-- [ ] Implement **clock** (like in onioff)
-- [ ] Disallow **kicking gateway out** (only in kickalloff())
-- [x] Add **select attack method** option
-- [x] Add elif statements for cases where there’s **only one argument** (e.g. ❯❯❯ sudo python kickthemout.py --attack arp)
-- [x] Add optparse option for **number of packets** per second (—packets, -p)
-- [ ] Turn **select attack method** into function 
-- [ ] Fix: If IP address in scan is too short, the **tab appears messed up**
-- [ ] **Start from [0]** in all options (not just when selecting target)
-- [x] Implement: **`kickONEOff/{attackVector} Spoofing selected…`**
-- [ ] Handle **EOFError** (when doing ^D instead of ^C)
-- [ ] Add **FAQ** to README
-- [ ] Add **Requirements Error Guide** to README (alternative methods to try and solve error)
-- [ ] Create **setup.py** (or bash script)
-- [ ] Add **—scan option** (for simple nmap scan) (MAYBE)
-- [x] **Remove ‘%’** in the end of  ❯❯❯ sudo python kickthemout.py -h
-- [ ] Add **USAGE** to README
-- [x] **Change text var** to actual text in scanningAnimation(text) function
-- [x] Implement camelcase to all variable names
-- [ ] Migrate all **double quotes to single quotes**
-- [ ] Add **keyboard exception** to scanningAnimation(text)
-- [ ] Create **man page**
-- [x] Call **shutdown function** in every systemExit
-- [ ] Add **scanning functions to scan.py**
     
 -------------
 
@@ -122,16 +85,6 @@ Here's a short demo:
 [![Asciinema Demo](https://nikolaskama.me/content/images/2017/01/kickthemout_asciinema.png)](https://asciinema.org/a/98200?autoplay=1&loop=1)
 
 (For more demos click [here](https://asciinema.org/~k4m4))
-
-
-How it works
--------------
-*TODO*
-
-
-FAQ
-----
-*TODO*
 
 
 Developers
