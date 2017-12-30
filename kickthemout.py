@@ -16,7 +16,7 @@ try:
     # check whether user is root
     if os.geteuid() != 0:
         print("\n{0}ERROR: KickThemOut must be run with root privileges. Try again with sudo:\n\t{1}$ sudo python kickthemout.py{2}\n").format(RED, GREEN, END)
-        os._exit(1)
+        raise SystemExit
 except:
     # then user is probably on windows
     pass
