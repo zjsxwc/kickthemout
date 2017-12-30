@@ -5,4 +5,5 @@ python:
 install:
     - pip install -r requirements.txt
 script:
+    - sudo -H pip install pcapy
     - sudo python -c "import kickthemout"
