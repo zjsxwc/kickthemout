@@ -98,9 +98,7 @@ def attackMethodBanner():
     sleep(0.2)
     print('\t{0}[{1}1{2}]{3} ARP Spoofing {4}(default){5}').format(YELLOW, RED, YELLOW, WHITE, RED, WHITE)
     sleep(0.2)
-    print('\t{0}[{1}2{2}]{3} DNS Poisoning').format(YELLOW, RED, YELLOW, WHITE)
-    sleep(0.2)
-    print('\t{0}[{1}3{2}]{3} Deauthing').format(YELLOW, RED, YELLOW, WHITE)
+    print('\t{0}[{1}2{2}]{3} Deauthing').format(YELLOW, RED, YELLOW, WHITE)
     sleep(0.2)
     print('\n\t{0}[{1}E{2}]{3} Exit KickThemOut\n').format(YELLOW, RED, YELLOW, WHITE)
 
@@ -755,9 +753,6 @@ def main():
                             attackVector = 'ARP'
                             kickoneoff()
                         elif choice == '2':
-                            attackVector = 'DNS'
-                            kickoneoff()
-                        elif choice == '3':
                             attackVector = 'DEAUTH'
                             kickoneoff()
                         else:
@@ -783,9 +778,6 @@ def main():
                             attackVector = 'ARP'
                             kicksomeoff()
                         elif choice == '2':
-                            attackVector = 'DNS'
-                            kicksomeoff()
-                        elif choice == '3':
                             attackVector = 'DEAUTH'
                             kicksomeoff()
                         else:
@@ -811,9 +803,6 @@ def main():
                             attackVector = 'ARP'
                             kickalloff()
                         elif choice == '2':
-                            attackVector = 'DNS'
-                            kickalloff()
-                        elif choice == '3':
                             attackVector = 'DEAUTH'
                             kickalloff()
                         else:
@@ -905,11 +894,11 @@ if __name__ == '__main__':
         else:
             attackVector = (options.attack).upper()
 
-        if attackVector == 'ARP' or attackVector == 'DNS' or attackVector == 'DEAUTH':
+        if attackVector == 'ARP' or attackVector == 'DEAUTH':
             pass
         else:
             print("\n{0}ERROR: Invalid attack method selected. Please select one of the following methods:\n" +
-                "\t{1}ARP{2} (ARP Spoofing), {3}DNS{4} (DNS Poisoning), {5}DEAUTH{6} (Deauthanticating){7}\n").format(RED, BLUE, RED, BLUE, RED, BLUE, RED, END)
+                "\t{1}ARP{2} (ARP Spoofing), {5}DEAUTH{6} (Deauthanticating){7}\n").format(RED, BLUE, RED, BLUE, RED, BLUE, RED, END)
             os._exit(1)
 
         # set to optparser version

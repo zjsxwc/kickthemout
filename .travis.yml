@@ -3,4 +3,4 @@ python:
     - "2.6"
     - "2.7"
 script:
-    - python -c "import kickthemout; import scan; import spoof"
+    - sudo python -c "import kickthemout; import scan; import spoof"
