@@ -24,63 +24,27 @@ Authors: [Nikolaos Kamarinakis](mailto:nikolaskam@gmail.com) & [David Schütz](m
     
 -------------
 
-# Installation
+# 安装
 
-## Debian Installation
-
-You can download KickThemOut by cloning the [Git Repo](https://github.com/k4m4/kickthemout) and simply installing its requirements:
-
+## Debian 8 Jessie 安装
 ```
-~ ❯❯❯ sudo apt-get update && sudo apt-get install nmap
+export LC_ALL='en_US.utf8'
+sudo apt-get update && sudo apt-get install nmap
+sudo apt-get insyall tcpdump
+sudo apt-get install python3-pip
 
-~ ❯❯❯ git clone https://github.com/k4m4/kickthemout.git
+git clone https://github.com/k4m4/kickthemout.git
+cd kickthemout/
+sudo -H pip3 install -r requirements.txt
 
-~ ❯❯❯ cd kickthemout/
-
-~/kickthemout ❯❯❯ sudo -H pip3 install -r requirements.txt
-
-~/kickthemout ❯❯❯ sudo python3 kickthemout.py
+sudo python3 kickthemout.py
 ```
 
 
-## MacOS Installation
-
-If you would like to install KickThemOut on a Mac, please run the following:
-
-```
-~ ❯❯❯ brew install libdnet nmap
-
-~ ❯❯❯ git clone https://github.com/k4m4/kickthemout.git
-
-~ ❯❯❯ cd kickthemout/
-
-~/kickthemout ❯❯❯ sudo -H pip3 install -r requirements.txt
-
-~/kickthemout ❯❯❯ sudo python3 kickthemout.py
-```
-
-**NOTE**: You need to have [Homebrew](http://brew.sh/) installed before running the Mac OS installation. 
-
-Also, **keep in mind** that you might be asked to run some extra commands after executing the pip requirement installation.
+## macOS运行不了
 
 
-## Arch Installation
-
-You can download KickThemOut on an Arch based system by executing the following:
-
-```
-~ ❯❯❯ git clone https://github.com/k4m4/kickthemout.git
-
-~ ❯❯❯ cd kickthemout/
-
-~ ❯❯❯ sudo -H pip3 install -r requirements.txt
-
-~/kickthemout ❯❯❯ sudo python3 kickthemout.py
-```
-
-<br/>
-
-# Usage
+# 使用方式
 
 ```
 Usage: sudo python3 kickthemout.py [options]
