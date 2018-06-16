@@ -1,27 +1,7 @@
 ![KickThemOut Logo](http://nikolaskama.me/content/images/2017/02/kickthemout_small.png)
 
-# KickThemOut
 
-> [KickThemOut](https://nikolaskama.me/kickthemoutproject) - **Kick Devices Off Your Network**
-
-A tool to kick devices out of your network and enjoy all the bandwidth for yourself.
-It allows you to select specific or all devices and ARP spoofs them off your local area network.
-
-- Compatible with Python **3+** 🎉.
-
-- *Not* compatible with Windows.
-
-Authors: [Nikolaos Kamarinakis](mailto:nikolaskam@gmail.com) & [David Schütz](mailto:xdavid@protonmail.com).
-
-[![Build Badge](https://travis-ci.org/k4m4/kickthemout.svg?branch=master)](https://travis-ci.org/k4m4/kickthemout)
-[![License Badge](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/k4m4/kickthemout/blob/master/LICENSE)
-[![Compatibility](https://img.shields.io/badge/python-3-brightgreen.svg)](https://github.com/k4m4/kickthemout)
-[![GitHub Stars](https://img.shields.io/github/stars/k4m4/kickthemout.svg)](https://github.com/k4m4/kickthemout/stargazers)
-
----
-
-<p align="center">✨Read my latest post: <a href="https://nikolaskama.me/kickthemout-v2-0/"><i>KickThemout v2.0! 🎉</i></a></p>
-    
+改了下 https://github.com/k4m4/kickthemout 的代码，适应国内环境，不然跑不起来。
 -------------
 
 # 安装
@@ -33,15 +13,15 @@ sudo apt-get update && sudo apt-get install nmap
 sudo apt-get insyall tcpdump
 sudo apt-get install python3-pip
 
-git clone https://github.com/k4m4/kickthemout.git
-cd kickthemout/
+git clone https://github.com/zjsxwc/kickthemout-CN.git
+cd kickthemout-CN/
 sudo -H pip3 install -r requirements.txt
 
 sudo python3 kickthemout.py
 ```
 
 
-## macOS运行不了
+## macOS运行不了，不要浪费时间折腾了
 
 
 # 使用方式
